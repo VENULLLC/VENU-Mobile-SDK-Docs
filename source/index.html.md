@@ -1,239 +1,63 @@
 ---
-title: API Reference
+title: VEN-U Mobile SDK
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+#language_tabs: # must be one of https://git.io/vQNgJ
+#  - swift
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
+  - <a href='http://lrsus.com'>Made By LRS</a>
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+<aside class="notice">
+Currently in alpha.
+</aside>
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+VEN-U Mobile SDK provides a way to further customer engagement for companies that are interested in tracking and serving customers by way of their mobile device and the VEN-U locationing solution.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Through the SDK, brands can expand on their existing mobile or loyalty app to interact with the customer who visits them and able to serve them as they broadcast from their phone.
 
-# Authentication
+Currently, the VEN-U Mobile SDK is only available for iOS under the Swift language.
 
-> To authorize, use this code:
+# class VenuBroadcast
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+The VenuBroadcast service enables the iPhone device to broadcast itself according to the company and individual location. According to the unique organization and site location, a unique service number is generated which is forwarded to the VEN-U system once the customer is detected at a table.
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Due to limitation of iOS restricting background processes, it is not possible to continue to broadcast if the phone goes to sleep or the app in question is closed. A workaround is currently in discussion.
 </aside>
 
-# Kittens
+## `public init(orgUUID: String, siteMinor: Int)`
 
-## Get All Kittens
+Creates a VenuBroadcast object.
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
+### Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+_orgUUID_ | Organization UUID that must be the same across all VEN-U installs and the mobile app for that site.
+_siteMinor_ | 16 bit identifier that should match the mobile ID set across all VEN-U installs. This is used to distinguish mobile customers from table tent customers.
 
-## Delete a Specific Kitten
+## `public func start() -> Void`
 
-```ruby
-require 'kittn'
+Begins broadcasting. if no service number is set prior to starting, it will generate a service number to use.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
+## `public func start(serviceNumber: Int, callback: (() -> Void)? = nil) -> Void`
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
+Begins broadcasting according to provided serviceNumber. When service number is being broadcast, optional callback can be used.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+_serviceNumber_ | Service number used to identify mobile customer on site.
+_callback_ | Optional function when broadcasting has started.
 
+## `public func stop() -> Void`
+
+Stops broadcasting.
+
+## `public func getServiceNumber() -> Int`
+
+Retrieves service number set when calling `start(serviceNumber: Integer, ...)` or generated number if not set.
