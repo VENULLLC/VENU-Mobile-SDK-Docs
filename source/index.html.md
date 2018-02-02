@@ -41,11 +41,11 @@ Parameter | Description
 _orgUUID_ | Organization UUID that must be the same across all VEN-U installs and the mobile app for that site.
 _siteMinor_ | 16 bit identifier that should match the mobile ID set across all VEN-U installs. This is used to distinguish mobile customers from table tent customers.
 
-## `public func start() -> Void`
+## `public func start(completionHandler: startbroadcastCompletionHandler? = nil)`
 
 Begins broadcasting. if no service number is set prior to starting, it will generate a service number to use.
 
-## `public func start(serviceNumber: Int, callback: (() -> Void)? = nil) -> Void`
+## `start(serviceNumber: Int, completionHandler: startbroadcastCompletionHandler? = nil)`
 
 Begins broadcasting according to provided serviceNumber. When service number is being broadcast, optional callback can be used.
 
@@ -54,7 +54,7 @@ Parameter | Description
 _serviceNumber_ | Service number used to identify mobile customer on site.
 _callback_ | Optional function when broadcasting has started.
 
-## `public func stop() -> Void`
+## `public func stop(completionHandler:stopbroadcastCompletionHandler? = nil)`
 
 Stops broadcasting.
 
