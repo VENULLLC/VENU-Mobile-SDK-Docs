@@ -233,13 +233,13 @@
                     <a href="#public-init-orguuid-string-siteminor-int" class="toc-h2 toc-link" data-title="code-public-init-orguuid-string-siteminor-int-code"><code>public init(orgUUID: String, siteMinor: Int)</code></a>
                   </li>
                   <li>
-                    <a href="#public-func-start-gt-void" class="toc-h2 toc-link" data-title="code-public-func-start-gt-void-code"><code>public func start() -&gt; Void</code></a>
+                    <a href="#public-func-start-completionhandler-startbroadcastcompletionhandler-nil" class="toc-h2 toc-link" data-title="code-public-func-start-completionhandler-startbroadcastcompletionhandler-nil-code"><code>public func start(completionHandler: startbroadcastCompletionHandler? = nil)</code></a>
                   </li>
                   <li>
-                    <a href="#public-func-start-servicenumber-int-callback-gt-void-nil-gt-void" class="toc-h2 toc-link" data-title="code-public-func-start-servicenumber-int-callback-gt-void-nil-gt-void-code"><code>public func start(serviceNumber: Int, callback: (() -&gt; Void)? = nil) -&gt; Void</code></a>
+                    <a href="#start-servicenumber-int-completionhandler-startbroadcastcompletionhandler-nil" class="toc-h2 toc-link" data-title="code-start-servicenumber-int-completionhandler-startbroadcastcompletionhandler-nil-code"><code>start(serviceNumber: Int, completionHandler: startbroadcastCompletionHandler? = nil)</code></a>
                   </li>
                   <li>
-                    <a href="#public-func-stop-gt-void" class="toc-h2 toc-link" data-title="code-public-func-stop-gt-void-code"><code>public func stop() -&gt; Void</code></a>
+                    <a href="#public-func-stop-completionhandler-stopbroadcastcompletionhandler-nil" class="toc-h2 toc-link" data-title="code-public-func-stop-completionhandler-stopbroadcastcompletionhandler-nil-code"><code>public func stop(completionHandler:stopbroadcastCompletionHandler? = nil)</code></a>
                   </li>
                   <li>
                     <a href="#public-func-getservicenumber-gt-int" class="toc-h2 toc-link" data-title="code-public-func-getservicenumber-gt-int-code"><code>public func getServiceNumber() -&gt; Int</code></a>
@@ -288,9 +288,9 @@ Due to limitation of iOS restricting background processes, it is not possible to
 <td>16 bit identifier that should match the mobile ID set across all VEN-U installs. This is used to distinguish mobile customers from table tent customers.</td>
 </tr>
 </tbody></table>
-<h2 id='public-func-start-gt-void'><code>public func start() -&gt; Void</code></h2>
+<h2 id='public-func-start-completionhandler-startbroadcastcompletionhandler-nil'><code>public func start(completionHandler: startbroadcastCompletionHandler? = nil)</code></h2>
 <p>Begins broadcasting. if no service number is set prior to starting, it will generate a service number to use.</p>
-<h2 id='public-func-start-servicenumber-int-callback-gt-void-nil-gt-void'><code>public func start(serviceNumber: Int, callback: (() -&gt; Void)? = nil) -&gt; Void</code></h2>
+<h2 id='start-servicenumber-int-completionhandler-startbroadcastcompletionhandler-nil'><code>start(serviceNumber: Int, completionHandler: startbroadcastCompletionHandler? = nil)</code></h2>
 <p>Begins broadcasting according to provided serviceNumber. When service number is being broadcast, optional callback can be used.</p>
 
 <table><thead>
@@ -308,7 +308,7 @@ Due to limitation of iOS restricting background processes, it is not possible to
 <td>Optional function when broadcasting has started.</td>
 </tr>
 </tbody></table>
-<h2 id='public-func-stop-gt-void'><code>public func stop() -&gt; Void</code></h2>
+<h2 id='public-func-stop-completionhandler-stopbroadcastcompletionhandler-nil'><code>public func stop(completionHandler:stopbroadcastCompletionHandler? = nil)</code></h2>
 <p>Stops broadcasting.</p>
 <h2 id='public-func-getservicenumber-gt-int'><code>public func getServiceNumber() -&gt; Int</code></h2>
 <p>Retrieves service number set when calling <code>start(serviceNumber: Integer, ...)</code> or generated number if not set.</p>
