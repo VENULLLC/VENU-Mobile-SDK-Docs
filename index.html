@@ -230,6 +230,12 @@
             <a href="#class-venubroadcast" class="toc-h1 toc-link" data-title="class-venubroadcast">class VenuBroadcast</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#public-typealias-startbroadcastcompletionhandler-bool-error-gt-void" class="toc-h2 toc-link" data-title="code-public-typealias-startbroadcastcompletionhandler-bool-error-gt-void-code"><code>public typealias startbroadcastCompletionHandler = (Bool,Error?) -&gt; Void</code></a>
+                  </li>
+                  <li>
+                    <a href="#public-typealias-stopbroadcastcompletionhandler-bool-error-gt-void" class="toc-h2 toc-link" data-title="code-public-typealias-stopbroadcastcompletionhandler-bool-error-gt-void-code"><code>public typealias stopbroadcastCompletionHandler = (Bool,Error?) -&gt; Void</code></a>
+                  </li>
+                  <li>
                     <a href="#public-init-orguuid-string-siteminor-int" class="toc-h2 toc-link" data-title="code-public-init-orguuid-string-siteminor-int-code"><code>public init(orgUUID: String, siteMinor: Int)</code></a>
                   </li>
                   <li>
@@ -270,6 +276,10 @@ Currently in alpha.
 <aside class="notice">
 Due to limitation of iOS restricting background processes, it is not possible to continue to broadcast if the phone goes to sleep or the app in question is closed. A workaround is currently in discussion.
 </aside>
+<h2 id='public-typealias-startbroadcastcompletionhandler-bool-error-gt-void'><code>public typealias startbroadcastCompletionHandler = (Bool,Error?) -&gt; Void</code></h2>
+<p>Completion Handler of stop broadcasting.</p>
+<h2 id='public-typealias-stopbroadcastcompletionhandler-bool-error-gt-void'><code>public typealias stopbroadcastCompletionHandler = (Bool,Error?) -&gt; Void</code></h2>
+<p>Completion Handler of stop broadcasting.</p>
 <h2 id='public-init-orguuid-string-siteminor-int'><code>public init(orgUUID: String, siteMinor: Int)</code></h2>
 <p>Creates a VenuBroadcast object.</p>
 <h3 id='parameters'>Parameters</h3>
