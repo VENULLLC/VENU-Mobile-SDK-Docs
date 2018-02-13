@@ -30,6 +30,12 @@ The VenuBroadcast service enables the iPhone device to broadcast itself accordin
 Due to limitation of iOS restricting background processes, it is not possible to continue to broadcast if the phone goes to sleep or the app in question is closed. A workaround is currently in discussion.
 </aside>
 
+## `public typealias startbroadcastCompletionHandler = (Bool,Error?) -> Void`
+Completion Handler of stop broadcasting.
+
+## `public typealias stopbroadcastCompletionHandler = (Bool,Error?) -> Void`
+Completion Handler of stop broadcasting.
+
 ## `public init(orgUUID: String, siteMinor: Int)`
 
 Creates a VenuBroadcast object.
